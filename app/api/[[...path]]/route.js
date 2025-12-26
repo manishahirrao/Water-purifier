@@ -47,6 +47,78 @@ async function handleRoute(request, { params }) {
       return handleCORS(NextResponse.json({ message: "Hello World" }))
     }
 
+    // Quote submission - POST /api/quote
+    if (route === '/quote' && method === 'POST') {
+      const body = await request.json()
+      const { name, email, phone, service, message } = body
+
+      if (!name || !email || !phone || !service) {
+        return handleCORS(NextResponse.json({ error: 'Missing required fields' }, { status: 400 }))
+      }
+
+      const quote = {
+        id: uuidv4(),
+        name,
+        email,
+        phone,
+        service,
+        message: message || '',
+        createdAt: new Date().toISOString(),
+        status: 'pending'
+      }
+
+      const collection = db.collection('quotes')
+      await collection.insertOne(quote)
+
+      return handleCORS(NextResponse.json({ 
+        message: 'Quote request submitted successfully', 
+        id: quote.id 
+      }))
+    }
+
+    // Contact submission - POST /api/contact
+    if (route === '/contact' && method === 'POST') {
+      const body = await request.json()
+      const { name, email, phone, subject, message } = body
+
+      if (!name || !email || !phone || !subject || !message) {
+        return handleCORS(NextResponse.json({ error: 'All fields are required' }, { status: 400 }))
+      }
+
+      const contact = {
+        id: uuidv4(),
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        createdAt: new Date().toISOString(),
+        status: 'new'
+      }
+
+      const collection = db.collection('contacts')
+      await collection.insertOne(contact)
+
+      return handleCORS(NextResponse.json({ 
+        message: 'Message sent successfully', 
+        id: contact.id 
+      }))
+    }
+
+    // Get all quotes - GET /api/quotes
+    if (route === '/quotes' && method === 'GET') {
+      const collection = db.collection('quotes')
+      const quotes = await collection.find({}).sort({ createdAt: -1 }).toArray()
+      return handleCORS(NextResponse.json({ quotes }))
+    }
+
+    // Get all contacts - GET /api/contacts
+    if (route === '/contacts' && method === 'GET') {
+      const collection = db.collection('contacts')
+      const contacts = await collection.find({}).sort({ createdAt: -1 }).toArray()
+      return handleCORS(NextResponse.json({ contacts }))
+    }
+
     // Status endpoints - POST /api/status
     if (route === '/status' && method === 'POST') {
       const body = await request.json()
