@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, Award, Users, Clock, Shield, ThumbsUp } from 'lucide-react'
+import Image from 'next/image'
+import { CheckCircle, Award, Users, Clock, Shield, ThumbsUp, Phone } from 'lucide-react'
 import Navbar from '@/components/Navbar.js'
 import Footer from '@/components/Footer.js'
 import WhatsAppFloat from '@/components/WhatsAppFloat.js'
@@ -78,10 +79,13 @@ export default function About() {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-500 opacity-90" />
         <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1584677191047-38f48d0db64e" 
+          <Image 
+            src="/about-hero.webp" 
             alt="About Us"
-            className="w-full h-full object-cover opacity-20"
+            fill
+            className="object-cover opacity-20"
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">
@@ -104,6 +108,7 @@ export default function About() {
         </div>
       </motion.section>
 
+
       {/* About Content */}
       <motion.section 
         className="py-20"
@@ -116,10 +121,13 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <motion.div variants={fadeInUp}>
               <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1662647343528-f7a5ed62c2dd" 
-                  alt="RO Service"
-                  className="w-full h-full object-cover"
+                <Image 
+                  src="/about.webp" 
+                  alt="Professional RO Service"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
               </div>
@@ -134,13 +142,13 @@ export default function About() {
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                 Our mission is to provide clean, safe, and healthy drinking water through innovative solutions and quality services. As an independent RO service provider, we guarantee service within just 4 hours!
               </p>
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                onClick={() => setIsQuoteModalOpen(true)}
+              <a 
+                href="tel:7739692808"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 text-lg font-semibold"
               >
-                Get Free Quote
-              </Button>
+                <Phone className="mr-2" size={20} />
+                Call Now: 7739692808
+              </a>
             </motion.div>
           </div>
 
