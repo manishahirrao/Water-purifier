@@ -65,38 +65,38 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
     {
-      name: 'Rajiv Malhotra',
-      location: 'Connaught Place, Delhi',
+      name: 'Rajiv Kumar',
+      location: 'Patna City, Patna',
       rating: 5,
-      text: 'Outstanding service! The technician arrived in CP within 2 hours and fixed my RO system. The water quality has improved significantly. Highly recommended for Delhi residents!',
+      text: 'Outstanding service! The technician arrived within 2 hours and fixed my RO system. The water quality has improved significantly. Highly recommended for Patna residents!',
       initial: 'R'
     },
     {
-      name: 'Neha Kapoor',
-      location: 'Dwarka, Delhi',
+      name: 'Neha Kumari',
+      location: 'Kankarbagh, Patna',
       rating: 5,
-      text: 'In Dwarka, we face severe water quality issues. Their RO service is prompt and efficient. The technician was very knowledgeable about Delhi\'s water conditions.',
+      text: 'In Kankarbagh, we face severe water quality issues. Their RO service is prompt and efficient. The technician was very knowledgeable about Patna\'s water conditions.',
       initial: 'N'
     },
     {
-      name: 'Arjun Mehta',
-      location: 'Rohini, Delhi',
+      name: 'Arjun Sharma',
+      location: 'Boring Road, Patna',
       rating: 5,
-      text: 'Best RO service in Rohini! They understand the hard water problems in our area. The technician was on time and very professional.',
+      text: 'Best RO service in Patna! They understand the hard water problems in our area. The technician was on time and very professional.',
       initial: 'A'
     },
     {
-      name: 'Priya Sharma',
-      location: 'Pitampura, Delhi',
+      name: 'Priya Singh',
+      location: 'Rajendra Nagar, Patna',
       rating: 5,
-      text: 'Living in Pitampura, water purifier service is crucial. Their team is very reliable and provides excellent maintenance. Highly recommended!',
+      text: 'Living in Rajendra Nagar, water purifier service is crucial. Their team is very reliable and provides excellent maintenance. Highly recommended!',
       initial: 'P'
     },
     {
-      name: 'Vikram Singh',
-      location: 'Janakpuri, Delhi',
+      name: 'Vikram Thakur',
+      location: 'Patliputra, Patna',
       rating: 5,
-      text: 'Their service in West Delhi is exceptional! They understand the local water problems and provide customized solutions. The RO is working better than ever!',
+      text: 'Their service in Patna is exceptional! They understand the local water problems and provide customized solutions. The RO is working better than ever!',
       initial: 'V'
     }
   ]

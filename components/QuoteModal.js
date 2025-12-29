@@ -31,36 +31,48 @@ export default function QuoteModal({ isOpen, onClose }) {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/quote', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Format the message for WhatsApp
+      const whatsappMessage = `*New Quote Request*%0A%0A` +
+        `*Name:* ${formData.name}%0A` +
+        `*Phone:* ${formData.phone}%0A` +
+        `*Email:* ${formData.email}%0A` +
+        `*Service Required:* ${formData.service}%0A` +
+        `*Message:* ${formData.message || 'Not specified'}%0A%0A` +
+        `_This quote request was sent from the RO Service Center website_`
+      
+      // Phone number for WhatsApp (with country code)
+      const phoneNumber = '917739692808' // Adding 91 for India
+      
+      // Create WhatsApp URL
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank')
+      
+      // Show success message
+      toast({
+        title: 'Opening WhatsApp',
+        description: 'Please complete your quote request on WhatsApp',
       })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        toast({
-          title: 'Quote Request Sent!',
-          description: 'We\'ll contact you shortly with your quote.',
-        })
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: ''
-        })
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      })
+      
+      // Close the modal after a short delay
+      setTimeout(() => {
         onClose()
-      } else {
-        throw new Error(data.error || 'Failed to send quote request')
-      }
+      }, 1000)
+      
     } catch (error) {
       toast({
         title: 'Error',
-        description: error.message,
+        description: 'Failed to open WhatsApp. Please try again or call us directly.',
         variant: 'destructive',
       })
     } finally {

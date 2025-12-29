@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*/checkout/
+Disallow: /*/checkout
+Disallow: /*/cart/
+Disallow: /*/cart
+Disallow: /*/account/
+Disallow: /*/account
+Disallow: /*/wishlist/
+Disallow: /*/wishlist
+Disallow: /*/search/
+Disallow: /*/search
+Disallow: /*?*q=
+Disallow: /*?*s=
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+Disallow: /*?*view=
+Disallow: /*?*limit=
+
+Sitemap: https://roservicecenter.in/sitemap.xml

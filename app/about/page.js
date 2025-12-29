@@ -10,6 +10,74 @@ import QuoteModal from '@/components/QuoteModal.js'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useState } from 'react'
+import Head from 'next/head'
+
+// SEO Metadata
+const metadata = {
+  title: 'About Us - Professional RO Service Center | Expert Water Purifier Services',
+  description: 'Learn about RO Service Center - Your trusted partner for professional RO water purifier services, repairs, and maintenance. 70+ expert technicians, 4-hour service guarantee, and 10+ years of experience in Patna.',
+  keywords: 'RO service, water purifier repair, RO maintenance, RO installation, water filter service, RO service center, professional RO technician, RO repair near me, Patna',
+  openGraph: {
+    title: 'About RO Service Center | Professional Water Purifier Services in Patna',
+    description: 'Expert RO water purifier services with 70+ technicians and 4-hour service guarantee. 10+ years of trusted service in Patna.',
+    url: 'https://roservicecenter.in/about',
+    siteName: 'RO Service Center',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About RO Service Center | Professional Water Purifier Services in Patna',
+    description: 'Expert RO water purifier services with 70+ technicians and 4-hour service guarantee in Patna.',
+  },
+  alternates: {
+    canonical: 'https://roservicecenter.in/about',
+  },
+}
+
+// Structured Data for Rich Snippets
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'RO Service Center',
+  image: 'https://roservicecenter.in/logo.png',
+  '@id': 'https://roservicecenter.in',
+  url: 'https://roservicecenter.in',
+  telephone: '+917739692808',
+  priceRange: '₹₹',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Patna',
+    addressLocality: 'Patna',
+    addressRegion: 'Bihar',
+    postalCode: '800001',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 25.5941,
+    longitude: 85.1376,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ],
+    opens: '07:00',
+    closes: '23:00',
+  },
+  sameAs: [
+    'https://www.facebook.com/roservicecenter',
+    'https://www.instagram.com/roservicecenter',
+    'https://twitter.com/roservicecenter',
+  ],
+}
 
 export default function About() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
@@ -68,7 +136,43 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+        <link rel="canonical" href="https://roservicecenter.in/about" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://roservicecenter.in/about" />
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta property="og:description" content={metadata.openGraph.description} />
+        <meta property="og:image" content="https://roservicecenter.in/about-og.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://roservicecenter.in/about" />
+        <meta property="twitter:title" content={metadata.openGraph.title} />
+        <meta property="twitter:description" content={metadata.openGraph.description} />
+        <meta property="twitter:image" content="https://roservicecenter.in/about-og.jpg" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      
       <Navbar onQuoteClick={() => setIsQuoteModalOpen(true)} />
+      
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="container mx-auto px-4 pt-6">
+        <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <li><a href="/" className="hover:text-blue-600 transition-colors">Home</a></li>
+          <li className="text-gray-400">/</li>
+          <li className="font-medium text-blue-600" aria-current="page">About Us</li>
+        </ol>
+      </nav>
       
       {/* Hero Section */}
       <motion.section 
@@ -123,18 +227,20 @@ export default function About() {
               <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
                   src="/about.webp" 
-                  alt="Professional RO Service"
+                  alt="Professional RO Service Technician at work"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
+                  title="Professional RO Service Expert"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
               </div>
             </motion.div>
             <motion.div variants={fadeInUp}>
               <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Professional RO Water Purifier Servicing, Repairs & Upkeep
+                Professional RO Water Purifier Servicing & Repairs in Patna
               </h2>
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                 At RO Service Center, we are committed to delivering reliable and efficient RO repair and maintenance services. With over 10 years of experience in the water purification industry, our team of 70+ expert technicians ensures that your water filters and purifiers function at their best.
@@ -162,7 +268,7 @@ export default function About() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                Why Choose Us
+                Why Choose RO Service Center in Patna
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 We do our best to provide excellent water purifier service
@@ -219,15 +325,88 @@ export default function About() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1580893246395-52aead8960dc" 
-                  alt="Our Values"
+                <Image 
+                  src="/about-values.jpg" 
+                  alt="Our Core Values at RO Service Center - Quality, Reliability, and Customer Satisfaction"
+                  width={800}
+                  height={600}
                   className="w-full h-full object-cover"
+                  priority
+                  title="Our Commitment to Quality RO Service"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <motion.section 
+        className="py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-16"
+            variants={fadeInUp}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about our RO services
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            {[
+              {
+                question: 'How often should I service my RO water purifier?',
+                answer: 'We recommend servicing your RO water purifier every 6 months to ensure optimal performance and water quality. However, if you notice any issues with water taste, flow rate, or quality, you should get it serviced immediately.'
+              },
+              {
+                question: 'What are the signs that my RO purifier needs servicing?',
+                answer: 'Common signs include: reduced water flow, unusual noise, water leakage, change in water taste or odor, indicator lights showing filter replacement, and increased TDS levels in purified water.'
+              },
+              {
+                question: 'Do you provide service for all RO brands?',
+                answer: 'Yes, we provide service for all major RO water purifier brands including Kent, Aquaguard, Pureit, Livpure, and more. Our technicians are trained to handle various models and brands.'
+              },
+              {
+                question: 'How long does a typical RO service take?',
+                answer: 'A standard RO service typically takes 30-45 minutes. However, if there are additional repairs or part replacements needed, it might take longer. Our technicians will provide you with an estimated time after diagnosis.'
+              },
+              {
+                question: 'What is included in your RO service?',
+                answer: 'Our comprehensive RO service includes: filter cleaning/replacement, membrane check, UV lamp check (if applicable), tank sanitization, flow rate check, TDS level testing, and overall system inspection to ensure everything is working properly.'
+              }
+            ].map((faq, index) => (
+              <motion.div 
+                key={index}
+                className="bg-white rounded-xl shadow-md overflow-hidden"
+                variants={fadeInUp}
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
+              >
+                <details className="group">
+                  <summary className="flex justify-between items-center p-6 cursor-pointer">
+                    <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                    <div className="w-6 h-6 flex-shrink-0 ml-4 transform group-hover:rotate-180 transition-transform duration-200">
+                      <svg className="w-full h-full text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </summary>
+                  <div className="px-6 pb-6 -mt-4 text-gray-600">
+                    {faq.answer}
+                  </div>
+                </details>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
 

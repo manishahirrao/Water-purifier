@@ -97,7 +97,8 @@ export default function TermsOfService() {
               </p>
               <p className="mt-4">
                 <strong>Email:</strong> support@roservicecenter.in<br />
-                <strong>Phone:</strong> 7739692808
+                <strong>Phone:</strong> 7739692808<br />
+                <strong>Address:</strong> Patna, Bihar, India
               </p>
             </section>
           </div>
