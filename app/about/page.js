@@ -319,7 +319,7 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/about-values.jpg" 
+                  src="/about-values.jpeg" 
                   alt="Our Core Values at RO Service Center - Quality, Reliability, and Customer Satisfaction"
                   width={800}
                   height={600}
