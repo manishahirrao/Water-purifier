@@ -165,14 +165,7 @@ export default function About() {
       
       <Navbar onQuoteClick={() => setIsQuoteModalOpen(true)} />
       
-      {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="container mx-auto px-4 pt-6">
-        <ol className="flex items-center space-x-2 text-sm text-gray-600">
-          <li><a href="/" className="hover:text-blue-600 transition-colors">Home</a></li>
-          <li className="text-gray-400">/</li>
-          <li className="font-medium text-blue-600" aria-current="page">About Us</li>
-        </ol>
-      </nav>
+    
       
       {/* Hero Section */}
       <motion.section 
